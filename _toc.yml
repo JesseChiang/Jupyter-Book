@@ -3,7 +3,21 @@
 
 format: jb-book
 root: intro
-chapters:
-- file: markdown
-- file: notebooks
-- file: markdown-notebooks
+parts:
+  - caption: INIT
+    chapters:
+    - file: markdown
+    - file: notebooks
+    - file: markdown-notebooks
+  - caption: CSC
+    chapters:
+    - file: csc/cpp/leetcode
+    - file: csc/data-structure/leetcode
+      sections:
+      - file: csc/data-structure/segment-tree
+    - file: csc/database-system/postgresql
+  - caption: STA 
+    chapters:
+    - file: sta/time-series/GARCH
+    - file: sta/time-series/Kalman-Filter
+
