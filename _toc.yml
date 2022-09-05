@@ -16,6 +16,10 @@ parts:
       sections:
       - file: csc/data-structure/segment-tree
     - file: csc/database-system/postgresql
+    - file: csc/database-system/kdbq
+    - file: csc/machine-learning/tensorflow
+      sections:
+      - file: csc/machine-learning/optimization/generic-algorithm
   - caption: STA 
     chapters:
     - file: sta/time-series/GARCH

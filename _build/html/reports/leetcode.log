@@ -1,0 +1,68 @@
+Traceback (most recent call last):
+  File "/home/jingxin/miniconda3/envs/cling/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/home/jingxin/miniconda3/envs/cling/lib/python3.7/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/jingxin/miniconda3/envs/cling/lib/python3.7/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/home/jingxin/miniconda3/envs/cling/lib/python3.7/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/home/jingxin/miniconda3/envs/cling/lib/python3.7/asyncio/base_events.py", line 573, in run_until_complete
+    return future.result()
+  File "/home/jingxin/miniconda3/envs/cling/lib/python3.7/site-packages/nbclient/client.py", line 664, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/home/jingxin/miniconda3/envs/cling/lib/python3.7/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/jingxin/miniconda3/envs/cling/lib/python3.7/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# 19. Remove Nth Node From End of List
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        m = 1
+        cursor = head
+        while cursor.next:
+            cursor = cursor.next
+            m += 1
+        
+        k = m-n
+        if k == 0:
+            head = head.next
+        else:
+            cursor = head
+            for i in range(k-1):
+                cursor = cursor.next
+            cursor.next = cursor.next.next    
+        return head
+            
+
+# Runtime: 60 ms, faster than 30.47% of Python3 online submissions for Remove Nth Node From End of List.
+# Memory Usage: 14 MB, less than 20.39% of Python3 online submissions for Remove Nth Node From End of List.
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m<ipython-input-9-69453e2980ac>[0m in [0;36m<module>[0;34m[0m
+[1;32m      6[0m [0;31m#         self.val = val[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      7[0m [0;31m#         self.next = next[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 8[0;31m [0;32mclass[0m [0mSolution[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      9[0m     [0;32mdef[0m [0mremoveNthFromEnd[0m[0;34m([0m[0mself[0m[0;34m,[0m [0mhead[0m[0;34m:[0m [0mOptional[0m[0;34m[[0m[0mListNode[0m[0;34m][0m[0;34m,[0m [0mn[0m[0;34m:[0m [0mint[0m[0;34m)[0m [0;34m->[0m [0mOptional[0m[0;34m[[0m[0mListNode[0m[0;34m][0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     10[0m         [0mm[0m [0;34m=[0m [0;36m1[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m<ipython-input-9-69453e2980ac>[0m in [0;36mSolution[0;34m()[0m
+[1;32m      7[0m [0;31m#         self.next = next[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      8[0m [0;32mclass[0m [0mSolution[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 9[0;31m     [0;32mdef[0m [0mremoveNthFromEnd[0m[0;34m([0m[0mself[0m[0;34m,[0m [0mhead[0m[0;34m:[0m [0mOptional[0m[0;34m[[0m[0mListNode[0m[0;34m][0m[0;34m,[0m [0mn[0m[0;34m:[0m [0mint[0m[0;34m)[0m [0;34m->[0m [0mOptional[0m[0;34m[[0m[0mListNode[0m[0;34m][0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     10[0m         [0mm[0m [0;34m=[0m [0;36m1[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     11[0m         [0mcursor[0m [0;34m=[0m [0mhead[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mNameError[0m: name 'ListNode' is not defined
+NameError: name 'ListNode' is not defined
+
