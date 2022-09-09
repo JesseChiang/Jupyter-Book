@@ -112,7 +112,12 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  INIT
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="markdown.html">
    Markdown Files
@@ -126,6 +131,120 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="markdown-notebooks.html">
    Notebooks with MyST Markdown
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  CSC
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="csc/machine-learning/tensorflow.html">
+   Tensorflow
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="csc/data-structure/segment-tree.html">
+     Segment Tree
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="csc/data-structure/leetcode.html">
+   LeetCode
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="csc/machine-learning/generic-algorithm.html">
+     Generic Algorithm
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="csc/cpp/leetcode.html">
+   C++
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="csc/database-system/postgresql.html">
+   PostgreSQL
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="csc/database-system/kdbq.html">
+     KDBQ
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="csc/-cryptography/intro.html">
+   Cryptography
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  STA
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="sta/time-series/GARCH.html">
+   GARCH
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sta/time-series/Kalman-Filter.html">
+   Kalman Filter
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  GEX
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="-gex/seafood/content.html">
+   Seafood Guide
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  SYS
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="-conda.html">
+   Conda
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="-linux.html">
+   Linux
   </a>
  </li>
 </ul>
@@ -315,10 +434,41 @@ It shows off a few of the major file types, as well as some sample content.
 It does not go in-depth into any particular topic - check out <a class="reference external" href="https://jupyterbook.org">the Jupyter Book documentation</a> for more information.</p>
 <p>Check out the content pages bundled with this sample book to see more.</p>
 <div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">INIT</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">CSC</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="csc/machine-learning/tensorflow.html">Tensorflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="csc/data-structure/leetcode.html">LeetCode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="csc/cpp/leetcode.html">C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="csc/database-system/postgresql.html">PostgreSQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="csc/-cryptography/intro.html">Cryptography</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">STA</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sta/time-series/GARCH.html">GARCH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sta/time-series/Kalman-Filter.html">Kalman Filter</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">GEX</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="-gex/seafood/content.html">Seafood Guide</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SYS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="-conda.html">Conda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="-linux.html">Linux</a></li>
 </ul>
 </div>
 </section>
