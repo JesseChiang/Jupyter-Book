@@ -3,7 +3,9 @@
 
 # # LeetCode
 
-# In[20]:
+# ## Code
+
+# In[1]:
 
 
 from typing import List, Optional
@@ -1408,4 +1410,657 @@ class Solution:
 
 # Runtime: 1879 ms, faster than 53.36% of Python3 online submissions for Number of Boomerangs.
 # Memory Usage: 27.3 MB, less than 29.05% of Python3 online submissions for Number of Boomerangs.
+
+
+# In[ ]:
+
+
+# 309. Best Time to Buy and Sell Stock with Cooldown
+
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        
+        def dp(a, b, flag, prices, buy, sell):
+            # print(a, b,  flag)
+            res = 0
+            if a == b:
+                res = 0
+            else:
+                if flag:
+                    tmp = min(prices[sell[a]]-prices[buy[a+1]], prices[sell[a]]-prices[sell[a]-1])
+                    return min(
+                        tmp+dp(a+1, b, 1, prices, buy, sell),
+                        prices[buy[a+1]+1]-prices[buy[a+1]]+dp(a+1, b, 0, prices, buy, sell)
+                    )
+                else:
+                    res = dp(a+1, b, 1, prices, buy, sell)
+            # print(res)
+            return res
+        
+        n = prices
+        buy = [0]
+        sell = []
+        bought = True
+        for i, price in enumerate(prices):
+            if i == 0:
+                continue
+            # print(i, price)
+            if price<=prices[i-1]:
+                if bought:
+                    # print('update buy')
+                    buy[-1] = i
+                else:
+                    bought = True
+                    # print('buy')
+                    buy.append(i)
+            else:
+                if bought:
+                    bought = False
+                    # print('sell')
+                    sell.append(i)
+                else:
+                    # print('update sell')
+                    sell[-1] = i
+        
+        if len(buy) > len(sell):
+            buy.pop()
+        n = len(buy)
+
+        if not n:
+            return 0
+        print(buy)
+        print(sell)
+
+
+        res = prices[sell[0]]-prices[buy[0]] 
+        recording = False
+        for i in range(n-1):
+            res += prices[sell[i+1]] - prices[buy[i+1]] 
+            if buy[i+1] == sell[i]+1 == sell[i+1]-1:
+                print(1 )
+                if recording:
+                    b = i+1
+                else:
+                    recording = True
+                    a = i
+                    b = i+1
+            else:
+                if recording:                    
+                    recording = False
+                    if buy[i+1] == sell[i]+1:
+                        b += 1
+                    
+                    res -= dp(a,b,1,prices,buy,sell)
+                        
+                else:
+                    res -= 0 if (buy[i+1] != sell[i]+1) else min(
+                        prices[sell[i]]-prices[buy[i+1]],
+                        min(
+                            prices[sell[i]]-prices[sell[i]-1],
+                            prices[buy[i+1]+1]-prices[buy[i+1]]
+                        )
+                    )
+                    
+        if recording:
+            print(a,b)
+            res -= dp(a,b,1,prices,buy,sell)
+        return res
+
+# Runtime: 38 ms, faster than 98.44% of Python3 online submissions for Best Time to Buy and Sell Stock with Cooldown.
+# Memory Usage: 14.3 MB, less than 67.96% of Python3 online submissions for Best Time to Buy and Sell Stock with Cooldown.
+
+
+# In[ ]:
+
+
+# 1717. Maximum Score From Removing Substrings
+
+class Solution:
+    def maximumGain(self, s: str, x: int, y: int) -> int:
+        def greedy(s):
+            res = 0
+            count = 0
+            stage = 0
+            if x>y:
+                large, small = x, y
+                upper, lower = 'a', 'b'
+            else:
+                large, small = y, x
+                upper, lower = 'b', 'a'
+                
+            for l in s:
+                if l == upper:
+                    if count < 0:
+                        stage += -count
+                        count = 0
+                    count += 1
+                else:
+                    count -= 1
+                    if count >= 0:
+                        res += large
+            res += small*min(max(count,0),stage)
+            return res
+              
+        res = 0
+        recording = False
+        for i in range(len(s)):
+            if s[i] in ('a','b'):
+                if recording:
+                    b += 1
+                else:
+                    recording = True
+                    a = i
+                    b = i+1
+            else:
+                if recording:
+                    res += greedy(s[a:b])
+                    
+                    recording = False
+        if recording:
+            res += greedy(s[a:b])
+        return res
+
+
+# Runtime: 1283 ms, faster than 32.32% of Python3 online submissions for Maximum Score From Removing Substrings.
+# Memory Usage: 15 MB, less than 66.67% of Python3 online submissions for Maximum Score From Removing Substrings.
+
+
+# In[ ]:
+
+
+# 1658. Minimum Operations to Reduce X to Zero
+
+class Solution:
+    def minOperations(self, nums: List[int], x: int) -> int:
+        nums = [0] + nums + [0]
+        n = len(nums)
+        leftpre = nums.copy()
+        rightpre = nums.copy()
+        
+        for i in range(1,n):
+            leftpre[i] += leftpre[i-1]
+            rightpre[-i-1] += rightpre[-i]
+        # print(leftpre)
+        # print(rightpre)
+        if leftpre[-1]<x:
+            return -1
+        
+        i = 1
+        j = n-1
+        res = n+1
+        while rightpre[j] < x:
+            j -= 1
+        if rightpre[j] == x:
+            res = n-j+1
+        # print(i,j)
+        # print(res)
+        while i < res-1:
+            if leftpre[i] == x:
+                # print(i)
+                res = min(res, i+2)
+                break
+            if leftpre[i] > x:
+                break
+            while leftpre[i]+rightpre[j]>x:
+                
+                j += 1
+            # print(j)
+            if leftpre[i] + rightpre[j] == x:
+                res = min(res, i+1+n-j)
+            else: j -= 1
+            i += 1
+
+        if res > n:
+            return -1
+        else:
+            return res-2
+
+
+# Runtime: 1967 ms, faster than 43.46% of Python3 online submissions for Minimum Operations to Reduce X to Zero.
+# Memory Usage: 28.3 MB, less than 31.94% of Python3 online submissions for Minimum Operations to Reduce X to Zero.
+
+
+# In[ ]:
+
+
+# 2215. Find the Difference of Two Arrays
+
+class Solution:
+    def findDifference(self, nums1: List[int], nums2: List[int]) -> List[List[int]]:
+        s1 = set(nums1)
+        s2 = set(nums2)
+        res = []
+        for s in s2:
+            if s in s1:
+                s1.remove(s)
+            else:
+                res.append(s)
+        return [list(s1),res]
+
+# Runtime: 206 ms, faster than 88.47% of Python3 online submissions for Find the Difference of Two Arrays.
+# Memory Usage: 14.3 MB, less than 80.92% of Python3 online submissions for Find the Difference of Two Arrays.
+
+
+# In[ ]:
+
+
+# 1425. Constrained Subsequence Sum
+
+class Solution:
+    def constrainedSubsetSum(self, nums: List[int], k: int) -> int:
+
+        n = len(nums)
+        
+        @cache
+        def dp(start):
+            if start>=len(nums):
+                return 0
+            res = nums[start]
+            for i in range(k):
+                if start+i < n:
+                    res = max(res, nums[start]+dp(start+i+1))
+            print(start, res)
+            return res
+        
+        res = dp(0)
+        i = 1
+        while i < n:
+            if nums[i]>0:
+                res = max(res, dp(i))
+            i+=1
+        return res
+
+class Solution:
+    def constrainedSubsetSum(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        tmp = nums.copy()
+        for i in range(n):
+            for j in range(min(i,k)):
+                tmp[i] = max(tmp[i], nums[i]+tmp[i-j-1])
+        return max(tmp)
+
+class Solution:
+    def constrainedSubsetSum(self, nums: List[int], k: int) -> int:
+        
+        n = len(nums)
+        
+        res = nums[0]
+        
+        h = [(-nums[0],0)]
+        
+        for i in range(1,n):
+            while h[0][1]+k<i:
+                heappop(h)
+            tmp = max(nums[i], nums[i]-h[0][0])
+            res = max(res, tmp)
+            heappush(h, (-tmp,i))
+
+        return res
+
+
+# Runtime: 4278 ms, faster than 8.84% of Python3 online submissions for Constrained Subsequence Sum.
+# Memory Usage: 34.1 MB, less than 18.58% of Python3 online submissions for Constrained Subsequence Sum.
+
+
+# In[ ]:
+
+
+# 1732. Find the Highest Altitude
+
+class Solution:
+    def largestAltitude(self, gain: List[int]) -> int:
+        tmp = gain[0]
+        res = 0
+        n = len(gain)
+        for i in range(1,n):
+            res = max(res, tmp)
+            tmp += gain[i]
+        res = max(res, tmp)
+        return res
+
+# Runtime: 42 ms, faster than 80.87% of Python3 online submissions for Find the Highest Altitude.
+# Memory Usage: 13.9 MB, less than 51.70% of Python3 online submissions for Find the Highest Altitude.
+
+
+# In[ ]:
+
+
+# 1995. Count Special Quadruplets
+
+class Solution:
+    def countQuadruplets(self, nums: List[int]) -> int:
+        n = len(nums)
+        res = 0
+        for i in range(n):
+            for j in range(i+1,n):
+                for k in range(j+1,n):
+                    for l in range(k+1,n):
+                        if nums[i]+nums[j]+nums[k] == nums[l]:
+                            res += 1
+        
+        return res
+
+# Runtime: 1416 ms, faster than 55.61% of Python3 online submissions for Count Special Quadruplets.
+# Memory Usage: 13.8 MB, less than 63.10% of Python3 online submissions for Count Special Quadruplets.
+
+class Solution:
+    def countQuadruplets(self, nums: List[int]) -> int:
+        n = len(nums)
+        res = 0
+        count = defaultdict(lambda: 0)
+        count[nums[-1]-nums[-2]]=1
+        for b in range(n-3,0,-1):
+            for a in range(b-1, -1, -1):
+                res += count[nums[a]+nums[b]]
+            for d in range(n-1,b,-1):
+                count[nums[d]-nums[b]] += 1
+        return res
+
+# Runtime: 123 ms, faster than 83.16% of Python3 online submissions for Count Special Quadruplets.
+# Memory Usage: 14 MB, less than 19.56% of Python3 online submissions for Count Special Quadruplets.
+
+
+# In[ ]:
+
+
+# 1979. Find Greatest Common Divisor of Array
+
+class Solution:
+    def findGCD(self, nums: List[int]) -> int:
+        
+        m = min(nums)
+        M = max(nums)
+ 
+        for i in range(m,0,-1):
+            if m%i == 0 and M%i == 0:
+                return i
+
+
+# Runtime: 119 ms, faster than 13.06% of Python3 online submissions for Find Greatest Common Divisor of Array.
+# Memory Usage: 14 MB, less than 81.44% of Python3 online submissions for Find Greatest Common Divisor of Array.
+
+
+class Solution:
+    def findGCD(self, nums: List[int]) -> int:
+
+        m = max(nums)
+        
+        d = min(nums)
+        r = m%d
+        while r>0:
+            m = d
+            d = r
+            r = m%d
+        return d
+            
+
+# Runtime: 112 ms, faster than 19.41% of Python3 online submissions for Find Greatest Common Divisor of Array.
+# Memory Usage: 14 MB, less than 81.44% of Python3 online submissions for Find Greatest Common Divisor of Array.
+
+
+# In[ ]:
+
+
+# 1551. Minimum Operations to Make Array Equal
+
+class Solution:
+    def minOperations(self, n: int) -> int:
+        res = 0
+        for i in range(1+n%2,n,2):
+            res += i
+        return res
+    
+class Solution:
+    def minOperations(self, n: int) -> int:
+        return (1+n%2+(n-1))*(n//2)//2
+
+
+# Runtime: 46 ms, faster than 79.72% of Python3 online submissions for Minimum Operations to Make Array Equal.
+# Memory Usage: 13.9 MB, less than 33.16% of Python3 online submissions for Minimum Operations to Make Array Equal.
+
+
+# In[ ]:
+
+
+# 1545. Find Kth Bit in Nth Binary String
+
+class Solution:
+    def findKthBit(self, n: int, k: int) -> str:
+        
+        def f(k,l):
+            if l == 1:
+                return 0
+            mid = (l+1)//2
+            if k == mid:
+                return 1
+            elif k<mid:
+                return f(k,(l-1)//2)
+            else:
+                return 1-f(2*mid-k, (l-1)//2)
+                
+        return str(f(k,2**n-1))
+
+# Runtime: 32 ms, faster than 96.48% of Python3 online submissions for Find Kth Bit in Nth Binary String.
+# Memory Usage: 13.9 MB, less than 92.96% of Python3 online submissions for Find Kth Bit in Nth Binary String.
+
+
+# In[ ]:
+
+
+# 695. Max Area of Island
+
+class Solution:
+    def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
+        
+        def dfs(i,j,n,m):
+            global tmp
+            if grid[i][j] == 1:
+                tmp += 1
+                grid[i][j] = -1
+                if i > 0:
+                    dfs(i-1,j,n,m)
+                if j > 0:
+                    dfs(i,j-1,n,m)
+                if i < n-1:
+                    dfs(i+1,j,n,m)
+                if j < m-1:
+                    dfs(i,j+1,n,m)
+            
+        res = 0
+        
+        n = len(grid)
+        m = len(grid[0])
+        
+        global tmp
+        
+        for i in range(n):
+            for j in range(m):
+                if grid[i][j] == 1:
+                    tmp = 0
+                    dfs(i,j,n,m)
+                    res = max(tmp,res)
+        return res
+
+# Runtime: 151 ms, faster than 87.91% of Python3 online submissions for Max Area of Island.
+# Memory Usage: 16.6 MB, less than 59.41% of Python3 online submissions for Max Area of Island.
+
+
+# In[ ]:
+
+
+# 1768. Merge Strings Alternately
+
+class Solution:
+    def mergeAlternately(self, word1: str, word2: str) -> str:
+        n1 = len(word1)
+        n2 = len(word2)
+        res = ''
+        if n1 >= n2:
+            for i in range(n2):
+                res += word1[i]+word2[i]
+            res += word1[(i+1):]
+        else:
+            for i in range(n1):
+                res += word1[i]+word2[i]
+            res += word2[(i+1):]
+        return res
+
+# Runtime: 37 ms, faster than 83.99% of Python3 online submissions for Merge Strings Alternately.
+# Memory Usage: 13.9 MB, less than 18.28% of Python3 online submissions for Merge Strings Alternately.
+
+
+# In[ ]:
+
+
+# 2119. A Number After a Double Reversal
+
+class Solution:
+    def isSameAfterReversals(self, num: int) -> bool:
+        if num == 0:
+            return True
+        return num%10
+
+# Runtime: 38 ms, faster than 77.70% of Python3 online submissions for A Number After a Double Reversal.
+# Memory Usage: 13.9 MB, less than 52.97% of Python3 online submissions for A Number After a Double Reversal.
+
+
+# In[ ]:
+
+
+# 168. Excel Sheet Column Title
+
+class Solution:
+    def convertToTitle(self, columnNumber: int) -> str:
+        res = ''
+        n = columnNumber-1
+        q = n//26
+        r = n%26
+        
+        while n>=0:
+            res = chr(r+65)+res
+            n = q-1
+            q = n//26
+            r = n%26
+
+        return res 
+
+# Runtime: 33 ms, faster than 88.24% of Python3 online submissions for Excel Sheet Column Title.
+# Memory Usage: 13.8 MB, less than 56.56% of Python3 online submissions for Excel Sheet Column Title.
+
+
+# In[ ]:
+
+
+# 1632. Rank Transform of a Matrix
+
+class Solution:
+    def matrixRankTransform(self, matrix: List[List[int]]) -> List[List[int]]:
+        # return
+        def rank(arr):
+            tmp = [[num, i, -1] for i, num in enumerate(arr)]
+            ordered = sorted(tmp)
+            for i, pair in enumerate(ordered):
+                if i == 0:
+                    continue
+                pair[2] = ordered[i-1][1]
+            return([pair[2] for pair in tmp])
+        
+        n = len(matrix)
+        m = len(matrix[0])
+        
+        mini = matrix[0][0]
+        
+        for i in range(n):
+            for j in range(m):
+                mini = min(mini, matrix[i][j])
+                
+        for i in range(n):
+            for j in range(m):
+                matrix[i][j] += (1-mini)
+        
+        row_prev = {row: rank(matrix[row]) for row in range(n)}
+        col_prev = {col: rank([matrix[row][col] for row in range(n)]) for col in range(m)}
+
+        
+        res = deepcopy(matrix)
+        update = 1
+        cnt = n*m
+        visited = set()
+        while len(visited)<n*m:
+            for i in range(n):
+                for j in range(m):
+                    flag = True
+                    
+                    pj = row_prev[i][j]   
+                    pi = col_prev[j][i]
+                    # print(pj,pi)
+                    if pj >= 0:
+                        if matrix[i][pj] == matrix[i][j]:
+                            if res[i][pj] > res[i][j]:
+                                res[i][j] += 1
+                            if res[i][pj] > update:
+                                flag = False
+                        else:
+                            if res[i][pj] >= res[i][j]:
+                                res[i][j] += 1
+                            if res[i][pj] >= update:
+                                flag = False
+                    if pi >= 0:
+                        # print(i,j)
+                        if matrix[pi][j] == matrix[i][j]:
+                            if res[pi][j] > res[i][j]:
+                                res[i][j] += 1
+                            if res[pi][j] > update:
+                                flag = False
+                        else:
+                            if res[pi][j] >= res[i][j]:
+                                res[i][j] += 1
+                            if res[pi][j] >= update:
+                                flag = False
+                    # save to update
+                    if res[i][j] == update:
+                        if i*m+j not in visited:
+                            visited.add(i*m+j)
+                            cnt -= 1
+                            
+                    elif res[i][j] > update:    
+                        if flag:
+                            res[i][j] = update
+                            visited.add(i*m+j)
+                            cnt -= 1
+                    
+                    if pj>=0 and matrix[i][pj] == matrix[i][j] and res[i][pj]<res[i][j]:
+                        res[i][pj] = res[i][j]
+                    
+                    if pi>=0 and matrix[pi][j] == matrix[i][j] and res[pi][j]<res[i][j]:
+                        res[pi][j] = res[i][j]
+            # break
+            # if update>60:
+            #     for row in res:
+            #         print(row)
+            #     print()
+            update += 1
+        
+        for i in range(n):
+            for j in range(m):
+                pj = row_prev[i][j]   
+                pi = col_prev[j][i]
+                if pj >= 0:
+                    if matrix[i][pj] == matrix[i][j]:
+                        if res[i][pj] > res[i][j]:
+                            res[i][j] += 1
+                    else:
+                        if res[i][pj] >= res[i][j]:
+                            res[i][j] += 1
+                if pi >= 0:
+                    if matrix[pi][j] == matrix[i][j]:
+                        if res[pi][j] > res[i][j]:
+                            res[i][j] += 1
+                    else:
+                        if res[pi][j] >= res[i][j]:
+                            res[i][j] += 1
+                        
+        return res
+
+# Time Limit Exceeded
 

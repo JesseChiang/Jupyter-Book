@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Tensorflow" href="../machine-learning/tensorflow.html" />
+    <link rel="next" title="Cryptography" href="../-cryptography/intro.html" />
     <link rel="prev" title="PostgreSQL" href="postgresql.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -142,8 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../data-structure/leetcode.html">
-   LeetCode
+  <a class="reference internal" href="../machine-learning/tensorflow.html">
+   Tensorflow
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -158,19 +158,48 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../data-structure/leetcode.html">
+   LeetCode
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../machine-learning/generic-algorithm.html">
+     Generic Algorithm
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../cpp/leetcode.html">
+   C++
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="postgresql.html">
    PostgreSQL
   </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   KDBQ
-  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     KDBQ
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../machine-learning/tensorflow.html">
-   Tensorflow
+  <a class="reference internal" href="../-cryptography/intro.html">
+   Cryptography
   </a>
  </li>
 </ul>
@@ -183,6 +212,40 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../../sta/time-series/GARCH.html">
    GARCH
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../sta/time-series/Kalman-Filter.html">
+   Kalman Filter
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  GEX
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../-gex/seafood/content.html">
+   Seafood Guide
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  SYS
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../-conda.html">
+   Conda
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../-linux.html">
+   Linux
   </a>
  </li>
 </ul>
@@ -340,12 +403,36 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#q-language">
+   Q Language
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -357,6 +444,19 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#q-language">
+   Q Language
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -366,6 +466,9 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="kdbq">
 <h1>KDBQ<a class="headerlink" href="#kdbq" title="Permalink to this headline">#</a></h1>
+<section id="q-language">
+<h2>Q Language<a class="headerlink" href="#q-language" title="Permalink to this headline">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -402,10 +505,10 @@ title="Print to PDF"
             <p class="prev-next-title">PostgreSQL</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../machine-learning/tensorflow.html" title="next page">
+    <a class='right-next' id="next-link" href="../-cryptography/intro.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tensorflow</p>
+        <p class="prev-next-title">Cryptography</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -3,13 +3,15 @@
 
 # # Generic Algorithm
 
-# In[6]:
+# ## Discret Case
+
+# In[1]:
 
 
 import numpy as np
 
 
-# In[12]:
+# In[2]:
 
 
 def selection(pop, scores, k=3):
@@ -64,7 +66,7 @@ def genetic_algorithm(objective, n_bits, n_iter, n_pop, r_cross, r_mut):
     return best, best_eval 
 
 
-# In[13]:
+# In[3]:
 
 
 objective = lambda x: -sum(x)
@@ -78,7 +80,7 @@ best, score = genetic_algorithm(objective, n_bits, n_iter, n_pop, r_cross, r_mut
 
 # convergence criteria?
 
-# In[24]:
+# In[4]:
 
 
 def decode(bounds, n_bits, bitstring):
@@ -94,7 +96,7 @@ def decode(bounds, n_bits, bitstring):
     return decoded
 
 
-# In[32]:
+# In[5]:
 
 
 def genetic_algorithm(objective, bounds, n_bits, n_iter, n_pop, r_cross, r_mut):
@@ -126,7 +128,7 @@ def genetic_algorithm(objective, bounds, n_bits, n_iter, n_pop, r_cross, r_mut):
     return best, best_eval 
 
 
-# In[34]:
+# In[6]:
 
 
 objective = lambda x: (x[0]**2+x[1]**2)
@@ -137,4 +139,10 @@ n_pop = 100
 r_cross = 0.9
 r_mut = 1./(n_bits*len(bounds))
 best, score = genetic_algorithm(objective, bounds, n_bits, n_iter, n_pop, r_cross, r_mut)
+
+
+# In[ ]:
+
+
+
 

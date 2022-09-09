@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Generic Algorithm" href="optimization/generic-algorithm.html" />
-    <link rel="prev" title="KDBQ" href="../database-system/kdbq.html" />
+    <link rel="next" title="Segment Tree" href="../data-structure/segment-tree.html" />
+    <link rel="prev" title="Notebooks with MyST Markdown" href="../../markdown-notebooks.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -141,11 +141,11 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../data-structure/leetcode.html">
-   LeetCode
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   Tensorflow
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
@@ -158,19 +158,48 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../data-structure/leetcode.html">
+   LeetCode
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="generic-algorithm.html">
+     Generic Algorithm
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../cpp/leetcode.html">
+   C++
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../database-system/postgresql.html">
    PostgreSQL
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../database-system/kdbq.html">
+     KDBQ
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../database-system/kdbq.html">
-   KDBQ
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Tensorflow
+  <a class="reference internal" href="../-cryptography/intro.html">
+   Cryptography
   </a>
  </li>
 </ul>
@@ -183,6 +212,40 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../../sta/time-series/GARCH.html">
    GARCH
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../sta/time-series/Kalman-Filter.html">
+   Kalman Filter
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  GEX
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../-gex/seafood/content.html">
+   Seafood Guide
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  SYS
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../-conda.html">
+   Conda
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../-linux.html">
+   Linux
   </a>
  </li>
 </ul>
@@ -391,106 +454,97 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Tensorflow
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import">
+   Import
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#import">
-     Import
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-dataset">
+   Load Dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-model">
+   Build Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#make-prediction">
+   Make Prediction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loss-function">
+   Loss Function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-compilation">
+   Model Compilation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#train-model">
+   Train Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probability-model">
+   Probability Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-series-forecasting">
+   Time-Series Forecasting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Load Dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-cleaning">
+   Data Cleaning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-engineering">
+   Feature Engineering
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vectorize">
+     Vectorize
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#load-dataset">
-     Load Dataset
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#build-model">
-     Build Model
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#make-prediction">
-     Make Prediction
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#loss-function">
-     Loss Function
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#model-compilation">
-     Model Compilation
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#train-model">
-     Train Model
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#probability-model">
-     Probability Model
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fast-fourier-transform">
+     Fast Fourier Transform
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#time-series-forecasting">
-   Time-Series Forecasting
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#split-dataset">
+   Split Dataset
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Load Dataset
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#data-cleaning">
-     Data Cleaning
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#feature-engineering">
-     Feature Engineering
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#vectorize">
-       Vectorize
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#fast-fourier-transform">
-       Fast Fourier Transform
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#split-dataset">
-     Split Dataset
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#normalize-data">
-     Normalize Data
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#data-windowing">
-     Data Windowing
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#baseline-model">
-     Baseline Model
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#normalize-data">
+   Normalize Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-windowing">
+   Data Windowing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#baseline-model">
+   Baseline Model
+  </a>
  </li>
 </ul>
 
@@ -511,106 +565,97 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Tensorflow
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import">
+   Import
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#import">
-     Import
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-dataset">
+   Load Dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-model">
+   Build Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#make-prediction">
+   Make Prediction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loss-function">
+   Loss Function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-compilation">
+   Model Compilation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#train-model">
+   Train Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probability-model">
+   Probability Model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-series-forecasting">
+   Time-Series Forecasting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Load Dataset
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-cleaning">
+   Data Cleaning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-engineering">
+   Feature Engineering
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vectorize">
+     Vectorize
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#load-dataset">
-     Load Dataset
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#build-model">
-     Build Model
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#make-prediction">
-     Make Prediction
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#loss-function">
-     Loss Function
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#model-compilation">
-     Model Compilation
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#train-model">
-     Train Model
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#probability-model">
-     Probability Model
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fast-fourier-transform">
+     Fast Fourier Transform
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#time-series-forecasting">
-   Time-Series Forecasting
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#split-dataset">
+   Split Dataset
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Load Dataset
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#data-cleaning">
-     Data Cleaning
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#feature-engineering">
-     Feature Engineering
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#vectorize">
-       Vectorize
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#fast-fourier-transform">
-       Fast Fourier Transform
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#split-dataset">
-     Split Dataset
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#normalize-data">
-     Normalize Data
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#data-windowing">
-     Data Windowing
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#baseline-model">
-     Baseline Model
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#normalize-data">
+   Normalize Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-windowing">
+   Data Windowing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#baseline-model">
+   Baseline Model
+  </a>
  </li>
 </ul>
 
@@ -634,7 +679,13 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TensorFlow Version: 2.6.0
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">/home/jingxin/OneDrive/Jupyter-Book/tensorflow.ipynb Cell 3</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B47.101.194.230/home/jingxin/OneDrive/Jupyter-Book/tensorflow.ipynb#ch0000002vscode-remote?line=0&#39;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B47.101.194.230/home/jingxin/OneDrive/Jupyter-Book/tensorflow.ipynb#ch0000002vscode-remote?line=1&#39;</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;TensorFlow Version: </span><span class="si">{</span><span class="n">tf</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;tensorflow&#39;
 </pre></div>
 </div>
 </div>
@@ -847,9 +898,8 @@ array([[2.41100260e-08, 2.65332201e-10, 4.95096401e-07, 2.92334407e-05,
 </div>
 </div>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="time-series-forecasting">
-<h1>Time-Series Forecasting<a class="headerlink" href="#time-series-forecasting" title="Permalink to this headline">#</a></h1>
+<section id="time-series-forecasting">
+<h2>Time-Series Forecasting<a class="headerlink" href="#time-series-forecasting" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -861,6 +911,7 @@ array([[2.41100260e-08, 2.65332201e-10, 4.95096401e-07, 2.92334407e-05,
 </div>
 </div>
 </div>
+</section>
 <section id="id1">
 <h2>Load Dataset<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
@@ -1419,16 +1470,16 @@ Labels shape (batch, time, features): (32, 1, 1)
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "conda-env-columbia-py"
+            mode: "python"
         },
         kernelOptions: {
-            kernelName: "conda-env-columbia-py",
+            kernelName: "python3",
             path: "./csc/machine-learning"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'conda-env-columbia-py'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
@@ -1437,17 +1488,17 @@ Labels shape (batch, time, features): (32, 1, 1)
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../database-system/kdbq.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../../markdown-notebooks.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">KDBQ</p>
+            <p class="prev-next-title">Notebooks with MyST Markdown</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="optimization/generic-algorithm.html" title="next page">
+    <a class='right-next' id="next-link" href="../data-structure/segment-tree.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Generic Algorithm</p>
+        <p class="prev-next-title">Segment Tree</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

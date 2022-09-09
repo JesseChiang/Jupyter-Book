@@ -11,17 +11,26 @@ parts:
     - file: markdown-notebooks
   - caption: CSC
     chapters:
-    - file: csc/cpp/leetcode
-    - file: csc/data-structure/leetcode
-      sections:
-      - file: csc/data-structure/segment-tree
-    - file: csc/database-system/postgresql
-    - file: csc/database-system/kdbq
     - file: csc/machine-learning/tensorflow
       sections:
-      - file: csc/machine-learning/optimization/generic-algorithm
+      - file: csc/data-structure/segment-tree
+    - file: csc/data-structure/leetcode
+      sections:
+      - file: csc/machine-learning/generic-algorithm
+    - file: csc/cpp/leetcode
+    - file: csc/database-system/postgresql
+      sections:
+      - file: csc/database-system/kdbq
+    - file: csc/-cryptography/intro
   - caption: STA 
     chapters:
     - file: sta/time-series/GARCH
     - file: sta/time-series/Kalman-Filter
+  - caption: GEX
+    chapters:
+    - file: -gex/seafood/content
+  - caption: SYS
+    chapters:
+    - file: -conda
+    - file: -linux
 

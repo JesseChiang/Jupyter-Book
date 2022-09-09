@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; My sample book</title>
+    <title>C++ &#8212; My sample book</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="LeetCode" href="../data-structure/leetcode.html" />
-    <link rel="prev" title="Notebooks with MyST Markdown" href="../../markdown-notebooks.html" />
+    <link rel="next" title="PostgreSQL" href="../database-system/postgresql.html" />
+    <link rel="prev" title="Generic Algorithm" href="../machine-learning/generic-algorithm.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -140,10 +140,10 @@ const thebe_selector_output = ".output, .cell_output"
   CSC
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../data-structure/leetcode.html">
-   LeetCode
+  <a class="reference internal" href="../machine-learning/tensorflow.html">
+   Tensorflow
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -158,19 +158,48 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../data-structure/leetcode.html">
+   LeetCode
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../machine-learning/generic-algorithm.html">
+     Generic Algorithm
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   C++
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../database-system/postgresql.html">
    PostgreSQL
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../database-system/kdbq.html">
+     KDBQ
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../database-system/kdbq.html">
-   KDBQ
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../machine-learning/tensorflow.html">
-   Tensorflow
+  <a class="reference internal" href="../-cryptography/intro.html">
+   Cryptography
   </a>
  </li>
 </ul>
@@ -183,6 +212,40 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../../sta/time-series/GARCH.html">
    GARCH
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../sta/time-series/Kalman-Filter.html">
+   Kalman Filter
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  GEX
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../-gex/seafood/content.html">
+   Seafood Guide
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  SYS
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../-conda.html">
+   Conda
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../-linux.html">
+   Linux
   </a>
  </li>
 </ul>
@@ -390,7 +453,12 @@ title="Print to PDF"
         <i class="fas fa-list"></i> Contents
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="simple visible nav section-nav flex-column">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#leetcode">
+   LeetCode
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -400,7 +468,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1><no title></h1>
+                <h1>C++</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -409,7 +477,12 @@ title="Print to PDF"
                             <h2> Contents </h2>
                         </div>
                         <nav aria-label="Page">
-                            <ul class="simple visible nav section-nav flex-column">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#leetcode">
+   LeetCode
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -420,7 +493,13 @@ title="Print to PDF"
                 
               <div>
                 
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="c">
+<h1>C++<a class="headerlink" href="#c" title="Permalink to this headline">#</a></h1>
+<section id="leetcode">
+<h2>LeetCode<a class="headerlink" href="#leetcode" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -448,17 +527,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../../markdown-notebooks.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../machine-learning/generic-algorithm.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Notebooks with MyST Markdown</p>
+            <p class="prev-next-title">Generic Algorithm</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../data-structure/leetcode.html" title="next page">
+    <a class='right-next' id="next-link" href="../database-system/postgresql.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">LeetCode</p>
+        <p class="prev-next-title">PostgreSQL</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
